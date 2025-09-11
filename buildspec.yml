@@ -1,0 +1,17 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - echo "Installing dependencies..."
+      - echo "Nothing to install for this dummy build"
+  pre_build:
+    commands:
+      - echo "Starting pre-build phase..."
+  build:
+    commands:
+      - echo "Building the project..."
+      - echo "Hello from CodeBuild! This proves the webhook works."
+  post_build:
+    commands:
+      - echo "Build completed on `date`"

@@ -3,16 +3,15 @@ version: 0.2
 phases:
   pre_build:
     commands:
-      - echo "Packaging Lambda function from lambda/..."
-      - mkdir -p build
-      - zip -r build/lambda.zip lambda -x "lambda/node_modules/aws-sdk/*"
+      - echo "Packaging Lambda function..."
+      - zip -r /tmp/lambda.zip lambda -x "lambda/node_modules/aws-sdk/*"
 
   build:
     commands:
-      - echo "Updating Lambda function 'test' in us-east-1..."
+      - echo "Updating Lambda function..."
       - aws lambda update-function-code \
           --function-name test \
-          --zip-file fileb://build/lambda.zip \
+          --zip-file fileb:///tmp/lambda.zip \
           --region us-east-1
 
   post_build:
@@ -21,4 +20,4 @@ phases:
 
 artifacts:
   files:
-    - build/lambda.zip
+    - /tmp/lambda.zip

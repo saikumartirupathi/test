@@ -1,35 +1,23 @@
 version: 0.2
 
 phases:
-  install:
-    runtime-versions:
-      nodejs: 22
-    working-directory: lambda
-    commands:
-      - echo "Installing dependencies..."
-      - npm install
-
   pre_build:
-    working-directory: lambda
     commands:
-      - echo "Packaging Lambda function..."
-      - mkdir -p ../build
-      - zip -r ../build/lambda.zip . -x "node_modules/aws-sdk/*"
+      - echo "Packaging Lambda function from lambda/..."
+      - mkdir -p build
+      - zip -r build/lambda.zip lambda -x "lambda/node_modules/aws-sdk/*"
 
   build:
-    working-directory: lambda
     commands:
-      - echo "Updating Lambda function..."
+      - echo "Updating Lambda function 'test' in us-east-1..."
       - aws lambda update-function-code \
           --function-name test \
           --zip-file fileb://build/lambda.zip \
           --region us-east-1
 
   post_build:
-    working-directory: lambda
     commands:
-      - echo "Build completed on $(date)"
-      - echo "Lambda function updated successfully."
+      - echo "Lambda function updated successfully at $(date)"
 
 artifacts:
   files:

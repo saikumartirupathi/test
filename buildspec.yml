@@ -14,4 +14,4 @@ phases:
       - echo "Hello from CodeBuild! This proves the webhookkkk workssssss."
   post_build:
     commands:
-      - echo "Build completed on `dateeeeeeeeee`"
+      - echo "Build completed on `dateeeeeeeeee test`"

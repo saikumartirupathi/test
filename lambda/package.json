@@ -1,0 +1,11 @@
+{
+  "name": "lambda-test",
+  "version": "1.0.0",
+  "description": "Dummy Node.js Lambda for testing",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"No tests yet\""
+  },
+  "author": "Sai",
+  "license": "MIT"
+}

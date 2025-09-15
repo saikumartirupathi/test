@@ -12,7 +12,7 @@ phases:
   pre_build:
     commands:
       - echo "Packaging Lambda function from te/..."
-      - cd te
+      - cd lambda
       - mkdir -p ../build
       - zip -r ../build/lambda.zip . -x "node_modules/aws-sdk/*"
 
